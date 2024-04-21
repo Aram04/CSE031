@@ -1,0 +1,70 @@
+Lab02 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+Individual Search 
+
+https://www.youtube.com/watch?v=2GV0K9Y2MKA
+https://www.youtube.com/watch?v=ZI6buaVvk8g
+https://www.youtube.com/watch?v=r5HQqU_6siA
+
+Hajin's Tutorials
+  
+https://www.youtube.com/watch?v=3BkEOvI36Ds 
+
+https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_setup/
+
+https://www.youtube.com/watch?v=v_C1cvo1biI
+
+Marcelo's Tutorials
+
+https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-terminal-workflow-tutorial.html
+
+https://code.visualstudio.com/docs/cpp/lldb-mi
+
+https://eecs280staff.github.io/tutorials/setup_macos.html
+
+Activity 2
+
+1. To compile punishment.c so that you can debug it in LLDB do: clang -g -o punish punishment.c
+2. To load it into LLDB do: lldb -> file punish
+3. To run punishment.c in LLDB do: lldb -> run
+4. Breakpoints are points in your code where you want the debugger to to pause execution so that you can inspect the 
+programs state. To set a breakpoint do: breakpoint set --(line number). Example: breakpoint set --line 10.
+Alternatively you can set a breakpoint at a function by typing: breakpoint set --name functionName.
+Summary: lldb -> file punish -> breakpoint set --line 10
+5. To run the program line by line you run the program in lldb and then use the command step
+6. To see the name of the variable while in LLDB you need to first pause the program or utilize a break point. 
+To pause you can type: pause. Then you do: print variableName. Replace 'variableName' with 
+the name of the variable you want to inspect. It will then display the current value of the variable.
+7. If the program is currently paused at a breakpoint and you want it to run to completion you can clear all breakpoints
+by doing: breakpoint delete and then: continue
+8. To exit LLDB you type: quit
+
+Activity 3
+
+TPS Activity 3
+1. In the first line of the main() function, four variables are declared: x, y, px, and py. Two of them, px and py, are pointers to integers.
+2. If you run the program without initializing the variables, the values of x, y, and arr[0] will be unpredictable and may contain garbage values. To validate this, you can insert printf statements to display their values:
+3. the best way to avoid unexpecetd values is to initiallize everything like assing values to variables and arrays.
+4. to get the value of x and y we :
+printf("%p\n", &x);
+printf("%p\n", &y);
+to set the pointer to point x and y:
+ px = &x;
+ py = &y;
+to print adresses:
+    printf("Value of px: %p, Address of px: %p\n", (void )px, (void)&px);
+    printf("Value of py: %p, Address of py: %p\n", (void )py, (void)&py);
+
+we can get a pointer P that points to the contents of arr such that:
+for (int i = 0; i < 10; i++) {
+        printf("arr[%d]: %d\n", i, *ptr); // Print the value at the current memory location pointed to by ptr
+        ptr++; // Move the pointer to the next element
+printf("Value:  %x\n", &iptr );
+
+8.The result will make sense because arr refers to the starting address of the array, which is also the address of its first element. So, the address of arr will be the same as the address of arr[0].

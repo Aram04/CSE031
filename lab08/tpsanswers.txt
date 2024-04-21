@@ -1,0 +1,76 @@
+Lab08 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+5. No we do not need them anymore.
+
+Activity 2
+
+1. In the given C program, the function recursion() takes an integer input, and if the input is not -1 or 0, it recursively calls itself with the input decreased by 1 and 2, 
+and sums the results. If the input is -1, it returns 1, and if it is 0, it returns 3. If 5 is entered, the program should return 8. I was wrong and the program returns 29.
+
+2. The main function in the MIPS version of recursion is similar to the C version in that it prompts the user for input and calls the recursion function with the input. However, 
+a lot of instructions are missing, and we need to fill them out in the following steps.
+
+3.  inputPrompt:	.asciiz "Please enter an integer: "
+    # Load prompt into $a0
+    la $a0, inputPrompt	
+    # Print prompt in $a0
+    li $v0, 4
+    syscall
+
+4. To read in the value from the user, we can use the syscall "li $v0, 5" to load the value 5 into the $v0 register, and then use the "syscall" instruction to read in the value. 
+We can store the value in $a0 since it is the register used as the argument for the recursion function call.
+
+5. After the recursion function call, we expect the returned value to be stored in $v0. However, the syscall for printing out a value also uses $v0. 
+To avoid overwriting the returned value, we can move $v0 to another register like $a0 before printing it out.
+
+6. addu $a0, $zero, $v0
+    li $v0, 1		 
+    syscall
+
+7. The storage is used to store the local variables of the function. 12 bytes are reserved in this storage, 
+and the first thing to be stored in this stack frame is the return address.
+
+sw $s0, 16($sp) # Push saved register to stack frame
+	sw $ra, 20($sp)	# Push $ra to stack frame
+	sw $s1, 24($sp)	# Push local variable to stack frame
+	sw $a0, 32($sp) # Push $a0 to caller's Argument stack section
+
+8. Based on the branch statement under label recursion, the returning value should be the sum of the results of the two recursive calls. 
+We can store this value in $v0.
+
+la $a0, returnOnePrompt
+	li $v0, 4
+	syscall
+	addiu $v0, $zero, 1	# Return 1
+
+9. Based on the branch statement under label not_minus_one, the returning value should be the result of the recursive call with the input decreased by 1. 
+We can store this value in $v0.
+
+la $a0, returnThreePrompt
+	li $v0, 4
+	syscall
+	addiu $v0, $zero, 3	# Return 3
+
+10. When the input argument is not -1 or 0, the program will call recursion 2 times. We need to save $a0 into the stack because it will be overwritten by the first call to recursion. 
+The first call will return a value which will be used in the second call.
+
+11. lw $a0, 32($sp)		# Restore $a0 from caller's Argument stack section
+	subiu $a0, $a0, 2	# m - 1
+
+12. Calling recursion right away will overwrite the previous recursions return value.
+	addu $s1, $v0, $zero	# recursion(m - 2)
+
+13.  lw $a0, 32($sp)		# Restore $a0 from caller's Argument stack section
+	subiu $a0, $a0, 1	# m - 1
+
+14. addu $v0, $v0, $s1	# recursion(m - 1)
+
+15. The value that needs to be retrieved is the value of the return address, which is stored in the register $ra.
+    lw $ra, 20($sp)		# Restore $ra from stack frame
+

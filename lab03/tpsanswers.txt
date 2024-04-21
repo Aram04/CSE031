@@ -1,0 +1,161 @@
+Lab03 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+1. 
+Static(stores global variables)
+Stack(Local variables)
+Heap(dynamic allocated memory)
+
+2.
+a) 3 variables are declared
+
+b) 2 variables are pointer variables
+
+ptr is pointing to an integer array
+
+handle is pointing to an integer pointer
+
+c) all the three variables are stored in stack memory pool
+
+d) ptr will point to the memory in the heap memory pool
+
+3.
+Extra Code:
+#include <stdio.h>
+#include <stdlib.h>
+
+ int main() {
+	int num;
+	int *ptr;
+	int **handle;
+
+	num = 14;
+	ptr = (int *) malloc(2 * sizeof(int));
+	*ptr = num;
+	handle = (int **) malloc(1 * sizeof(int *));
+	*handle = ptr;
+
+	printf("Address of Num Variable %u\n",&num);
+	printf("Address of ptr variable %u\n", &ptr);
+	printf("ptr pointer variable contains %u\n", ptr);
+	printf("\nThe value stored at the pointer variable points to memory is %d",*ptr);
+	printf("\nAddress of handle Variable %u",&handle);
+	printf("\nhandle variable contains %u",handle);
+	printf("\nhandle variable points to memory which contains %u",*handle);
+	printf("\nThe value stored at the handle points to ptr variable is %d",**handle);	
+
+	return 0;
+} 
+
+Activity 2
+
+1.
+Algorithm:
+
+Start
+
+Declare a pointer to a struct Node called "head"
+
+Allocate memory for a new Node using the malloc function, and assign the address to "head"
+
+Set the iValue of the Node pointed by "head" to 5
+
+Set the fValue of the Node pointed by "head" to 3.14
+
+Insert any extra code you want to add at this point
+
+Print the value of "head" using the "%p" format specifier in printf
+
+Print the address of "head" using the "&" operator in printf
+
+Print the address of the iValue member of the Node pointed by "head" using the "&" operator in printf
+
+Print the address of the fValue member of the Node pointed by "head" using the "&" operator in printf
+
+Print the value of the "next" member of the Node pointed by "head" using the "&" operator in printf
+
+Stop
+
+2.
+Extra Code:
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int iValue;
+    float fValue;
+    struct Node *next;
+};
+
+int main() {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    head->iValue = 5;
+    head->fValue = 3.14;
+    
+    // Insert extra code to print out the value of head,
+    // addresses of head, iValue, fValue, and next pointed by head.
+    printf("value of head: %p\n", head);
+    printf("address of head: %p\n", &head);
+    printf("address of iValue: %p\n", &head->iValue);
+    printf("address of fValue: %p\n", &head->fValue);
+    printf("next: %p\n", &head->next);
+    
+    return 0;
+}
+
+3. 
+The above code defines a structure called "Node" with three members: an integer "iValue," a float "fValue," and a pointer to another Node called "next."
+
+In the main function, memory is dynamically allocated for a Node using malloc, and the pointer "head" is assigned the address of the allocated memory.
+
+The iValue and fValue of the Node pointed by "head" are set to 5 and 3.14, respectively. 
+
+The code then prints the value of "head," the address of "head," and the addresses of the iValue, fValue, and next members of the Node.
+
+The output of the above code:
+
+value of head: 0x600001dc8010
+
+address of head: 0x7ff7b9c162f0
+
+address of iValue: 0x600001dc8010
+
+address of fValue: 0x600001dc8014
+
+next: 0x600001dc8018
+
+Individual Assignment 1: Arrays and pointers
+
+a. We need to pass the size of the array to the function bubbleSort because without knowing the size, the function won't
+know when to stop sorting.
+
+b. Yes, the original array (the one being passed into the function) is changed at the end of the bubbleSort function. Bubble 
+Sort is an in-place sorting algorithm, which means it sorts the elements within the array itself.
+
+c. A new array (s_array) is needed to store the result of the sorted values because the original array is sorted in place. 
+If we were to update the original array as we sort, we would lose the original order of the elements, making it impossible to print the original array later in the program.
+
+Individual Assignment 2: Cyclic Linked List
+
+The code works by using two pointers, slow and fast, which traverse the linked list at different speeds. The slow pointer moves one 
+node forward at each iteration, while the fast pointer moves two nodes forward at each iteration. If there is a cycle in the linked list, then the two pointers will eventually meet at the same node.
+When this happens, the function returns 1 to indicate that there is a cycle. Otherwise, the pointers will reach the end of the list without meeting, and the function returns 0 to indicate that there is no cycle.
+
+The function has_cycle() takes a pointer to the head of the linked list as its argument.
+
+The function initializes two pointers, slow and fast, to point to the head of the list.
+
+The while loop iterates as long as fast is not null and fast->next is not null.
+
+Inside the loop, the slow pointer is moved one node forward by assigning slow = slow->next.
+
+Inside the loop, the fast pointer is moved two nodes forward by assigning fast = fast->next->next.
+
+If slow == fast, then the two pointers have met, which means that there is a cycle in the linked list. In this case, the function returns 1.
+
+If the loop terminates without the two pointers meeting, then there is no cycle in the linked list. In this case, the function returns 0.

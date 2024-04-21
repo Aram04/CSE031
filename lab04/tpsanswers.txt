@@ -1,0 +1,50 @@
+Lab04 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+1. 2 is printed and it was expected as hex value of 2 is also 2.
+
+2. four_c = (char*)four_ints;
+Here four_ints is address of first element in four_ints array. Which has 4 byte of memory.
+Now we are assigning four_c a char pointer which has 1 byte memory so it will point to first byte of first element in four_ints.
+So when we are assigning four_c array (4) values as 'A' then first element memory will be filled with 4 'A'
+So now first element of four_ints is having
+65	65	65	65	2	2	2
+So when print four_ints[0] it will print 41414141
+
+3. 41414141 verifies Q2 answer
+
+4. It prints 2 and this is correct as four_ints only first element is being accessed by four_c as four_c is accessing 4 byte memory 
+in total and that is only first memory block of four_ints. So rest of the array doesn't change except first element.
+
+5.a. One int array(four_ints) of 4 ints memory were allocated in this program and four_c was pointing to same array.
+5.b. Yes, They are pointing the same location but one is int array and one is char array so four_c was accessing 1 byte memory as one index.
+5.c. Both are pointing to same location
+
+6. We can see the difference between two consecutive location of four_ints array is 4 byte and that is because int takes 4 byte of memory.
+
+7. Drawn
+
+8. We can see in four_c every consecutive element is at 1 byte difference as char takes 1 byte memory.
+
+9. Drawn
+
+10. When the index of array is incremented then it is advances by the memory that one data type, that is stored in array, takes.
+
+Activity 2
+
+1. Line #8 in the provided code snippet is a dynamic memory allocation line for a 2-dimensional array that is allocating memory for 'n' number of pointers of integer types. 
+The int** arr means a pointer to a pointer which is used to allocate memory dynamically for a 2-dimensional array.
+
+2. To access the ith value of the array, you must use pointer notation, and you can access it using *(arr+i). To allocate all rows and initialize all contents to zero, you can use a loop for this operation. 
+
+3. To access arr[i][j] in pointer notation, it would be *(*(arr+i)+j). 
+
+4. When passing the array to the function, it's necessary to also pass the size of the array because once the array is passed to the function, 
+it's treated as a pointer; and there's no built-in command to get the size of the array.
+
+ 

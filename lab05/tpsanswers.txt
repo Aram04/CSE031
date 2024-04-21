@@ -1,0 +1,36 @@
+Lab05 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+1. MARS stands for MIPS Assembler and Runtime Simulator
+
+4.
+a. Loading an assembly file: Click "File" -> "Open" and select the desired file.
+b. Assembling (compiling) the program: Click "Assemble" or press F3.
+c. Running the assembled program: Click "Tools" -> "Run" or press F5.
+d. Running a program before assembling: No, you cannot run a program before assembling it.
+e. Running the assembled program line by line: Click "Tools" -> "Single Step" or press F7.
+f. Running the program again after it has finished running: Click "Tools" -> "Reset" then "Run" again.
+
+Activity 2
+
+1. .data marks the beginning of the data section where you declare initialized data. .word is used to allocate space in memory to store a word, and in this case, it initializes the variable n with the value 13. .text marks the beginning of the code section where you write your program's instructions.
+
+2. beq $t3, $0, finish is a branch instruction. It checks if the value in register $t3 is equal to zero. If it is, the program branches to the label finish.
+
+3. j fib is an unconditional jump instruction. It transfers control to the label fib, effectively creating a loop and allowing the program to recursively calculate the Fibonacci sequence.
+
+4. To set a breakpoint on line 15, open the source code in MARS, click on the left margin of line 15 to set the breakpoint. You'll see a red dot indicating the breakpoint.
+
+5. After stopping at a breakpoint, click "Run" -> "Continue" to resume execution. To step through the code, use "Run" -> "Step" or press F10.
+
+6. To view the content of a register, go to "Tools" -> "Registers Display". To modify a register's value manually, double-click on the value in the register display window and enter the new value.
+
+7. n is stored in address 0x100100000. Changing the value to 10 outputs 55.
+
+8. The syscall instruction is used to make system calls to interact with the operating system. In this program, line 19 (li $v0, 1) sets up the system call for
+printing an integer ($v0 register holds the system call number) and line 21 (syscall) actually executes the system call. Similarly, li $v0, 10 and syscall on line 21 are used to exit the program.

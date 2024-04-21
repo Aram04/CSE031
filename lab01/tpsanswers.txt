@@ -1,0 +1,51 @@
+Lab01 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+Sam
+
+Activity 1:
+
+My Links:
+1.https://www.youtube.com/watch?v=YHFzr-akOas
+2.https://www.youtube.com/watch?v=dQ8JgDUS8DA
+3.https://www.youtube.com/watch?v=FTTr2bjI2UM
+
+Hajin's Links:
+1.https://youtu.be/h4jJjDNUpSs
+2.https://youtu.be/CpTfQ-q6MPU
+3.https://www.freecodecamp.org/news/how-to-learn-linux-terminal-as-a-beginner/
+
+
+Marcelo's Links:
+1.https://ubuntu.com/tutorials/command-line-for-beginners#1-overview
+2.https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners
+3.https://opensource.com/article/21/8/linux-terminal
+
+Sam's Links:
+1.https://www.youtube.com/watch?v=s3ii48qYBxA
+2.https://www.youtube.com/watch?v=h4jJjDNUpSs
+3.https://maker.pro/linux/projects/basic-unix-commands-to-work-on-mac-terminal
+
+
+Activity 2:
+
+A) Click the Launchpad icon in the Dock type Terminal in the search field, then click Terminal.
+B) Yes you can manage two terminals at once
+A) Using the ls comand
+A) Using cd comand
+A) Double click on an empty space then make new directory then call it CSE31
+
+Activity 3:
+
+https://www.educba.com/gcc-command-in-linux/
+https://www.geeksforgeeks.org/gcc-command-in-linux-with-examples/
+Shared to groupmates
+gcc -g main.c
+It will compile with no errors on terminal
+-c will instruct GCC to only compile the source file to an .o (object) file,
+-g flag tells gcc to generate and embed debug information.
+We can change it manually by clicking save as and rename it to cselab1
+Terminal error, no such file directory
+gcc -g cselab1.c

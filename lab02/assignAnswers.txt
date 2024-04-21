@@ -1,0 +1,53 @@
+Individual Assignment 1: Segmentation Faults
+
+1.The segmentation fault in the code is caused by passing an integer pointer to scanf 
+instead of a pointer to double. This leads to undefined behavior and a segmentation fault.
+The segmentation fault occurs in the read_values function, 
+specifically in the scanf function call inside the while loop.
+This is the line causing the fault: scanf("%d", input);
+2. To fix it, we need to pass the address of the input variable using the & operator.
+You fix the line by changing it to: scanf("%d", &input);
+
+3. The bug is related to how the sum variable is being passed to the read_values function. 
+Currently, it's passed by value, which means that any modifications  made to it inside the function 
+won't affect the original variable in the main function.
+
+4. To fix this, we need to pass a pointer to the sum variable so that the function can modify its value directly.
+The read_values function signature was modified to accept a pointer to a double instead of a double parameter. 
+This change allows the function to directly modify the value of sum in the main function.
+int read_values(double *sum) {
+Initializes the sum to zero before starting the accumulation of input values
+*sum = 0; 
+Inside the read_values function, the sum variable is correctly updated using the dereferenced pointer.
+*sum += input;
+In the main function, the address of the sum variable is passed to the read_values function.
+values = read_values(&sum);
+
+Individual Assignment 2: Fix appendTest.c
+
+1. The program reads the input strings, appends str2 to str1 using the append function, and then prints the result.
+The expected output is the concatenation of str1 and str2.
+
+2. 
+Bug:
+If the combined length of str1 and str2 exceeds the size of str1, the program may result in undefined behavior. 
+This is because the program currently does not check if there is enough space in str1 before appending characters.
+Fix:
+Change the code to explicitly pass the size of str1 to the append function.
+
+3. If the combined length of str1 and str2 exceeds the allocated space for str1, the program will not behave as expected. 
+It results in undefined behavior due to a buffer overflow. The program does not check for sufficient space, leading to unexpected output.
+
+Individual Assignment 3: Complete arrCopy.c
+
+Make modifications to the following sections of the code:
+
+Dynamic memory allocation for the original array:
+
+Input of array elements and computation of even and odd element counts
+
+Dynamic memory allocation for the new arrays containing even and odd elements
+
+The arrCopy() function that copies even and odd elements from the original array to the new arrays
+
+The printArr() function that outputs the contents of the arrays

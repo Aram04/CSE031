@@ -1,0 +1,21 @@
+1. Intel Core i5 i5-6500.
+
+2. This CPU has 3 levels of cache: L1, L2, L3.
+This is a separate L1 cache for data and instructions.
+
+3. L1 data: 4 x 32 KB.
+L1 instructions: 4 x 32 KB.
+L2: 4 x 256 KB.
+L3: 6 MB.
+
+4. The block (line) size of every level of cache is 64 bytes.
+
+5. The caches are set associative.
+L1 data: 8-way.
+L1 instructions: 8-way.
+L2: 4-way.
+L3: 12-way.
+
+6. Tag bits: 8-way set requires 3 bits.
+Index bits: 128000B / 512B = 250, cache addresses requires 8 bits.
+Offset bits: 64 bytes (64 data columns) requires 6 bits.

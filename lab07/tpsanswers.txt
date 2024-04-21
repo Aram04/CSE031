@@ -1,0 +1,52 @@
+Lab07 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+1. Procedures, functions, and methods are all programming constructs that group a set of instructions together to perform a specific task. The main difference between them is their context and how they are called:
+
+-Procedures are a sequence of instructions that perform a specific task within a program. They are typically used in low-level languages like assembly and do not have a return value.
+
+-Functions are a type of procedure that returns a value. They are commonly used in high-level programming languages like C, Python, and Java.
+
+-Methods are similar to functions but are associated with an object or class in object-oriented programming.
+
+4. Line 20 has the label SUM which adds the values in $a0 and $a1 and stores it into $v0.
+
+5. Yes, creating a label at the appropriate location and jumping to it achieves the same outcome as using a temporary register to preserve the original value.
+
+6. Currently, the address is being stored in register $ra with a value of 0. However, this doesn't make sense because the address of the instruction following the j SUM command is not 0.
+
+7. When you try to run the program in the Execute tab, you will encounter an error due to the invalid return address. The program will terminate with an error message like "Error in : invalid program counter value: 0x00000000".
+
+8. The correct address is 4194346.
+
+9. No, the address changed to 4194344, 2 less than the original address.
+
+10. The new address is 4194344. The output now shows 15.
+
+11. Instead of using "j" to call a procedure, we should use "jal" (jump and link). The "jal" instruction saves the return address in $ra before jumping to the procedure, so we don't have to manually save the return address.
+
+12. Modify the code by changing the "j SUM" instruction to "jal SUM".
+
+Activity 2
+
+1. The output of proc2.c should be 38.
+
+2. This assembly program performs the same operations to the proc2.c program, but it has register misuse. It defines two subroutines, SUM and 
+SUB, below the MAIN function, which are invoked throughout the program. The variables x and y are initialized from the values specified in the .data directive, 
+while the variables m and b are initialized within the SUM and SUB subroutines, respectively.
+
+3. When MAIN calls SUM, SUM knows where to return to because of the use of the jal (Jump and Link) instruction. This instruction not only jumps to the label SUM but also saves the return address, which is the address immediately following 
+the jal instruction, into register $ra (return address register). This allows SUM to know where to return once it's done executing.
+After SUM called SUB, the address returning to MAIN is still stored in $ra. However, when SUB is called from SUM, it overwrites the $ra register with its own return address. 
+This means that once SUB is finished, it will attempt to return to the address specified by its jr $ra instruction, which would be the return address of SUM, not MAIN.
+
+4. We could save the original value of n onto the stack before calling the SUB function and then restoring it afterward. This allows us to preserve the value of n without consuming 
+additional registers. However, it requires careful management of the stack pointer and can potentially lead to stack overflow if not handled properly.
+
+5. In line 24, the original value in $s0 from MAIN is overwritten with the value of register $a0. This is potentially a problem because the original value of $s0 is lost, 
+and if MAIN relies on this value later in the code, it could lead to unexpected behavior or errors.

@@ -1,0 +1,86 @@
+Lab06 TPS Activity
+
+Aram Shkhyan
+Marcelo Rodriguez 
+Hajin Park
+
+Activity 1
+
+1. 
+Text Segment: 0 * 0040000
+
+Data Segment: 0 * 1001000
+
+2. Basic one True Assembly Language: add $8, $0, $0
+
+Source one MIPS Assembly Language: main: add $t0, $0, Szero
+
+The difference between the two in terms of the relationship with the machine code is the $0 and the Szero.
+
+3. Date Segment: The difference in bytes between 2 address locations is 0 * 1001000 and 0 * 10010020 so the difference is 00000020.
+
+4. For each address location, there is eight columns for Data Segment.
+
+5. The relationship between the address difference and the number of columns at each address location is that for Data Segment the address location changes but the columns remain the same.
+
+6. 
+.data
+
+m: .word 20
+
+.text
+
+lw $t0, m
+
+7. The address that m is stored is 0 x 00400014
+
+8. 
+.data
+
+strl: asciiz "I love CSE31!"
+
+9. It is stored in Data Segment 0 x 10010000
+
+10. Yes, it does since the characters are stored backwards
+
+11. We can print str1 by doing a system call code for printing string, load address of string to be printed, call operating system to perform operation,
+syscall takes in the argument and then terminate the program.
+
+12. la (loads the address), n = 13, to $t3 the value of $t3 will be 11 after running the program.
+
+Activity 2
+
+1. MIPS architecture opts for simplicity and efficiency by providing a small and efficient instruction set. By using these instructions together MIPS efficiently handles various 
+inequality comparisons while keeping the instruction set compact and easy to implement in hardware.
+
+Individual Assignment 1
+
+1. sumAll.s PsuedoCode:
+
+1. Initialize registers:
+   - $t0: even_sum (initialize to 0)
+   - $t1: odd_sum (initialize to 0)
+   - $t2: user_input
+
+2. input_loop:
+   - Prompt the user: "Please enter a number: "
+   - Read user input into $t2
+
+3. Check if input is zero:
+   - If $t2 == 0, jump to print_sums
+   - Otherwise, proceed to the next steps
+
+4. Check if input is even or odd:
+   - Calculate $t3 = $t2 % 2
+   - If $t3 == 0, add $t2 to even_sum
+   - Otherwise, add $t2 to odd_sum
+
+5. Repeat input_loop
+
+6. print_sums:
+   - Print "Sum of even numbers is: " followed by even_sum
+   - Print newline
+   - Print "Sum of odd numbers is: " followed by odd_sum
+   - Print newline
+
+7. Exit the program

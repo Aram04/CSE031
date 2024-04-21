@@ -1,0 +1,32 @@
+Line #7: addi $s0, $zero, -15:
+Format: I-Type
+Opcode for addi: 001000 (6 bits), 0x8
+Source register ($zero): 00000 (5 bits, $zero is register 0), 0x0
+Target register ($s0): 10000 (5 bits, $s0 is register 16), 0x10
+Immediate value: -15 is represented in 16 bit two's complement: 1111 1111 1111 0001 (16 bits)
+Machine code: 00100000000100001111111111110001, 0x2010fff1
+
+Line #14: slt $t0, $s0, $s1:
+Format: R-Type
+Opcode for R-type instructions: 000000 (6 bits), 0x0
+Source register ($s0): 10000 (5 bits), 0x10
+Target register ($s1): 10001 (5 bits), 0x11
+Destination register ($t0): 01000 (5 bits, $t0 is register 8), 0x8
+Shift amount (shamt) for slt: 00000 (5 bits, not used in slt), 0x0
+Function code for slt: 101010 (6 bits), 0x2a
+Machine code: 00000010000100010100000000101010, 0x0211402a
+
+Line #17: beq $t0, $zero, LEEQ:
+Format: I-Type
+Opcode for beq: 000100 (6 bits), 0x4
+Source register ($t0): 01000 (5 bits), 0x8
+Target register ($zero): 00000 (5 bits), 0x0
+Immediate: LEEQ, 0000000000000110
+Machine code: 00010001000000000000000000000100, 0x11000006
+
+Line #20: j GRT:
+Format: J-Type
+Opcode for j: 000010 (6 bits), 0x2
+Label: GRT, 4194332, 00000000010000000000000000011100
+Immediate: 00000100000000000000000111
+Machine code: 00001000000100000000000000000110, 0x08100007
